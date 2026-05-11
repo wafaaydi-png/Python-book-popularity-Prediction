@@ -145,7 +145,7 @@ Puis cliquer sur **Prédire** pour obtenir :
 
 ---
 ## Capture d'écran
-![capture]("b5.pnj")
+![capture]("b5.png")
 
 ## 🛠️ Technologies utilisées
 
