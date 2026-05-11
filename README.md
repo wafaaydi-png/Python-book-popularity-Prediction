@@ -144,6 +144,8 @@ Puis cliquer sur **Prédire** pour obtenir :
 - **Non populaire**
 
 ---
+## Capture d'écran
+![capture]("b5.pnj")
 
 ## 🛠️ Technologies utilisées
 
