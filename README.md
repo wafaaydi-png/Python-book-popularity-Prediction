@@ -1,153 +1,113 @@
-# 📚 Prédiction de la Popularité des Livres - Machine Learning & Flask
+## 📚 Prédiction de la Popularité des Livres | Machine Learning & Flask
 
-## 📌 Description du projet
-Ce projet permet de **prédire la popularité d’un livre** à l’aide du **Machine Learning** et d’une **application web Flask**.
+## 📌 Présentation du projet
 
-Le modèle prédit si un livre sera :
+Ce projet consiste en la création d’un **modèle de Machine Learning** capable de prédire la popularité d’un livre à partir de différentes informations textuelles et numériques, ainsi qu’au développement d’une **application web interactive avec Flask** permettant d’effectuer des prédictions en temps réel.
 
-- ✅ **Populaire**
-- ❌ **Non populaire**
+L’objectif est de construire un pipeline complet allant de la préparation des données jusqu’au déploiement du modèle, afin de transformer les données littéraires en **prédictions exploitables** sur le succès potentiel d’un livre.
 
-à partir de plusieurs informations fournies sur le livre :
+---
+
+# 📂 Structure du projet
+
+## 1️⃣ Préparation et analyse des données
+
+Cette étape est dédiée au nettoyage, à la transformation et à l’enrichissement du dataset avant l’entraînement des modèles.
+
+### Traitements réalisés
+
+- Nettoyage des données
+- Suppression des doublons
+- Gestion des valeurs manquantes
+- Préparation des variables cibles
+
+### Feature engineering
+
+- Extraction du nombre d’avis utiles
+- Extraction du nombre total d’avis
+- Calcul du pourcentage d’avis utiles
+- Fusion des variables textuelles
+
+### Variables utilisées
 
 - Titre du livre
 - Prix
 - Résumé de l’avis
 - Texte complet de l’avis
 - Description du livre
+- Auteurs
+- Catégories
 - Nombre d’avis utiles
 - Nombre total d’avis
 
-Le résultat est affiché dans une interface web interactive.
+### Objectif
+
+Préparer un jeu de données propre et pertinent pour optimiser les performances du modèle prédictif.
 
 ---
 
-## 🎯 Objectif du projet
-Construire un pipeline complet de Machine Learning permettant de :
+## 2️⃣ Modélisation Machine Learning
 
-- nettoyer et préparer les données
-- transformer les données textuelles et numériques
-- entraîner plusieurs modèles de classification
-- comparer leurs performances
-- sélectionner le meilleur modèle
-- sauvegarder le modèle final
-- intégrer le modèle dans une application Flask
+Cette étape permet d’entraîner et de comparer plusieurs modèles de classification afin de sélectionner le plus performant.
 
----
+### Modèles testés
 
-## 📂 Fichiers du projet
-
-- `book_popularity_ml_clean_notebook_with_models.ipynb`  
-  → Notebook complet d’analyse et d’entraînement du modèle
-
-- `app.py`  
-  → Application Flask pour effectuer la prédiction
-
-- `book_popularity_model.pkl`  
-  → Modèle entraîné sauvegardé
-
-- `index.html`  
-  → Interface utilisateur de prédiction
-
----
-
-## 📊 Informations sur le dataset
-
-Le jeu de données contient **15 719 livres** avec les variables suivantes :
-
-- `title` → titre
-- `price` → prix
-- `review/helpfulness` → utilité des avis
-- `review/summary` → résumé de l’avis
-- `review/text` → texte de l’avis
-- `description` → description du livre
-- `authors` → auteurs
-- `categories` → catégories
-- `popularity` → popularité (variable cible)
-
----
-
-## ⚙️ Préparation des données
-
-### Nettoyage des données
-- Suppression des doublons
-- Suppression des valeurs manquantes sur la variable cible
-
-### Création de nouvelles variables
-À partir de `review/helpfulness`, création de :
-
-- `num_helpful` → nombre d’avis utiles
-- `num_reviews` → nombre total de votes
-- `perc_helpful_reviews` → pourcentage d’avis utiles
-
-### Traitement du texte
-Fusion des colonnes textuelles dans une seule variable :
-
-- titre
-- auteurs
-- catégories
-- résumé
-- texte de l’avis
-- description
-
-Transformation du texte avec **TF-IDF Vectorizer**.
-
----
-
-## 🤖 Modèles de Machine Learning testés
-
-Plusieurs modèles ont été comparés :
-
-- Régression Logistique + TF-IDF
+- Régression Logistique
 - Random Forest
 - Gradient Boosting
 - Naive Bayes
-- XGBoost (optionnel)
+- XGBoost
+
+### Méthodes utilisées
+
+- Vectorisation du texte avec TF-IDF
+- Pipeline de prétraitement automatisé
+- Entraînement et validation des modèles
+- Comparaison des performances
 
 ### Meilleur modèle sélectionné
 
-✅ **Régression Logistique + TF-IDF**
+- Régression Logistique avec TF-IDF
 
-### Performances
+### Performance du modèle
 
-- Accuracy : **70,5 %**
-- F1 Score pondéré : **70,7 %**
-- ROC-AUC évalué
+- Accuracy : 70,5 %
+- F1 Score pondéré : 70,7 %
+- Évaluation ROC-AUC
+
+### Objectif
+
+Construire un modèle fiable capable de prédire si un livre sera populaire ou non.
 
 ---
 
-## 💾 Sauvegarde du modèle
+## 3️⃣ Application web Flask
 
-Le pipeline complet a été sauvegardé avec **joblib** :
+Cette partie permet d’intégrer le modèle entraîné dans une interface web interactive pour réaliser des prédictions en temps réel.
 
+### Fonctionnalités disponibles
+
+- Saisie des informations du livre
+- Prétraitement automatique des données
+- Prédiction instantanée
+- Affichage du résultat :
+  - Populaire
+  - Non populaire
+
+### Fichiers du projet
+
+- `book_popularity_ml_clean_notebook_with_models.ipynb`
+- `app.py`
 - `book_popularity_model.pkl`
+- `index.html`
 
-Cela permet à Flask d’utiliser exactement le même prétraitement et le même modèle pour la prédiction.
+### Objectif
 
----
-
-## 🌐 Application Flask
-
-L’utilisateur peut saisir :
-
-- Titre du livre
-- Prix
-- Résumé de l’avis
-- Texte complet de l’avis
-- Description
-- Nombre d’avis utiles
-- Nombre total d’avis
-
-Puis cliquer sur **Prédire** pour obtenir :
-
-- **Populaire**
-- **Non populaire**
+Rendre le modèle accessible via une interface simple et intuitive.
 
 ---
-## Capture d'écran
-![Interface](b5.png)
 
-## 🛠️ Technologies utilisées
+# 🛠️ Outils utilisés
 
 - Python
 - Pandas
@@ -160,3 +120,12 @@ Puis cliquer sur **Prédire** pour obtenir :
 
 ---
 
+# 🎯 Résultats attendus
+
+Ce projet permet de :
+
+- Nettoyer et préparer des données textuelles complexes
+- Construire un pipeline complet de Machine Learning
+- Comparer plusieurs modèles de classification
+- Déployer un modèle prédictif dans une application web
+- Réaliser des prédictions interactives sur la popularité des livres
