@@ -9,7 +9,7 @@ L’objectif est de construire un pipeline complet allant de la préparation des
 ---
 
 # 📂 Structure du projet
-
+![capture](b5.png)
 ## 1️⃣ Préparation et analyse des données
 
 Cette étape est dédiée au nettoyage, à la transformation et à l’enrichissement du dataset avant l’entraînement des modèles.
